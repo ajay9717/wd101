@@ -27,9 +27,9 @@ const displayEntries = () =>
     const table = `<table>
     <tr>
     <th>Name</th>
-    <th>email</th>
-    <th>password</th>
-    <th>dob</th>
+    <th>Email</th>
+    <th>Password</th>
+    <th>Dob</th>
     <th>Accepted terms ?</th>
     </tr>${tableEntries}
     </table>`
