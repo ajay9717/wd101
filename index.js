@@ -54,7 +54,11 @@ const saveUserForm = (event) => {
     const age = today.getFullYear() - dobDate.getFullYear();
     const monthDiff = today.getMonth() - dobDate.getMonth();
     const dayDiff = today.getDate() - dobDate.getDate();
-    const validAge = age > 18 && age < 55 || (age === 18 && (monthDiff > 0 || (monthDiff === 0 && dayDiff >= 0))) || (age === 55 && (monthDiff < 0 || (monthDiff === 0 && dayDiff <= 0)));
+
+    // Simplified age validation
+    const validAge = (age > 18 || (age === 18 && (monthDiff > 0 || (monthDiff === 0 && dayDiff >= 0)))) &&
+                     (age < 55 || (age === 55 && (monthDiff < 0 || (monthDiff === 0 && dayDiff <= 0))));
+
     if (!validAge) {
         alert("Age must be between 18 and 55 years.");
         return;
@@ -63,9 +67,11 @@ const saveUserForm = (event) => {
     const entry = { name, email, password, dob, acceptTerms };
     userEntries.push(entry);
     localStorage.setItem("user-entries", JSON.stringify(userEntries));
-    displayEntries();
-    userForm.reset();
+    
+    displayEntries(); // Show the new entry immediately
+    userForm.reset();  // Reset form after submission
 }
-window.onload = displayEntries;
-userForm.addEventListener("submit", saveUserForm);
 
+// Load and display entries when the page is loaded
+window.onload = displayEntries; 
+userForm.addEventListener("submit", saveUserForm);
