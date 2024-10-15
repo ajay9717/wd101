@@ -14,7 +14,7 @@ const displayEntries = () => {
         const emailCell = `<td>${entry.email}</td>`;
         const passwordCell = `<td>${entry.password}</td>`;
         const dobCell = `<td>${entry.dob}</td>`;
-        const acceptTermsCell = `<td>${entry.acceptTerms ? "True" : "False"}</td>`;
+        const acceptTermsCell = `<td>${entry.acceptTerms ? "true" : "false"}</td>`;
 
         return `<tr>${nameCell}${emailCell}${passwordCell}${dobCell}${acceptTermsCell}</tr>`;
     }).join("\n");
